@@ -37,7 +37,7 @@ func main() {
 
 	for _, project := range config.Repos {
 		team = getTeam(config.Users)
-		Info("Checking Repo: %s", project)
+		fmt.Println("Checking Repo: ", project)
 		r, err := git.PlainOpen(project)
 		if err != nil {
 			Warning("Error opening %s, moving on.", project)
@@ -66,6 +66,8 @@ func main() {
 			}
 		}
 	}
+	fmt.Println("Press the Enter Key exit")
+	fmt.Scanln() // wait for Enter Key
 }
 
 func getTeam(teamMembers []string) map[string]bool {
